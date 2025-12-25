@@ -48,7 +48,11 @@ body {
 .overlay {
   position: absolute;
   inset: 0;
-  background: rgba(0,0,0,0.45);
+  background: radial-gradient(
+    circle at center,
+    rgba(0,0,0,0.35),
+    rgba(0,0,0,0.75)
+  );
 }
 
 /* CONTENIDO PORTADA */
@@ -76,21 +80,29 @@ body {
 
 .nombre {
   font-family: 'Playfair Display', serif;
-  font-size: clamp(3rem, 8vw, 5.5rem);
-  letter-spacing: 0.08em;
-  margin-bottom: 18px;
+  font-size: clamp(3.2rem, 9vw, 5.8rem);
+  letter-spacing: 0.12em;
+  margin-bottom: 20px;
 
-  background: linear-gradient(90deg, #ffffff, #cfcfcf, #ffffff);
+  background: linear-gradient(
+    180deg,
+    #011b10,
+    #365e4c,
+    #048145
+  );
+
   background-clip: text;
--webkit-background-clip: text;
-color: transparent;
--webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+
+  animation: glowPulse 3s ease-in-out infinite;
 }
 
 .frase {
   font-size: 0.95rem;
-  line-height: 1.6;
-  color: #cccccc;
+  line-height: 1.7;
+  color: #cfcfcf;
   max-width: 420px;
 }
 .container {
@@ -103,44 +115,105 @@ section {
   padding: 60px 24px;
 }
 
-#evento {
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
-  padding: 40px 24px;
-}
+/* =========================
+   SECCIÓN EVENTO / FIESTA
+========================= */
 
-.evento-card {
+#evento {
+  position: relative;
+  min-height: 100vh;
+  background:
+    linear-gradient(rgba(0,0,0,0.85), rgba(0,0,0,0.85)),
+    url("/img/fiesta-bg.jpg") center/cover no-repeat;
   display: flex;
   align-items: center;
-  gap: 18px;
+  justify-content: center;
 }
 
-.icon-evento {
-  width: 48px;
-  height: auto;
-  
+/* Contenedor interno */
+.section-inner.evento {
+  width: 100%;
+  max-width: 900px;
+  padding: 4rem 2rem;
+  display: flex;
+  justify-content: center;
 }
 
-.evento-titulo {
-  font-size: 1.1rem;
-  font-weight: 500;
-  color: #e0e0e0;
-  margin-bottom: 4px;
+/* =========================
+   CARD FIESTA (ELEGANTE)
+========================= */
+
+.evento-card {
+  background: rgba(15, 15, 15, 0.85);
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 18px;
+  padding: 3.5rem 3rem;
+  text-align: center;
+  color: #f2f2f2;
+  width: 100%;
+  max-width: 520px;
+  box-shadow:
+    0 20px 40px rgba(0,0,0,0.6);
+  backdrop-filter: blur(4px);
 }
 
-.evento-hora {
-  font-size: 1rem;
-  color: #c7c7c7;
-}
-
-
+/* GIF / ICONO */
 .icon-gif {
-  width: 50px;
-
-  margin-right: 12px;
-  filter: hue-rotate(80deg) brightness(1.2) contrast(1.1);
+  width: 80px;
+  margin-bottom: 1.8rem;
+  opacity: 0.9;
 }
+
+/* TÍTULO */
+.evento-card h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.6rem;
+  letter-spacing: 3px;
+  margin-bottom: 1.2rem;
+  color: #ffffff;
+}
+
+/* TEXTO */
+.evento-card p {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.15rem;
+  line-height: 1.7;
+  color: #dcdcdc;
+  margin-bottom: 2rem;
+}
+
+/* LINK MAPS */
+.evento-card a {
+  display: inline-block;
+  padding: 0.7rem 1.8rem;
+  border-radius: 30px;
+  border: 1px solid rgba(255,255,255,0.6);
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 0.95rem;
+  letter-spacing: 1px;
+  transition: all 0.3s ease;
+}
+
+.evento-card a:hover {
+  background: #ffffff;
+  color: #000;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 600px) {
+  .evento-card {
+    padding: 2.5rem 2rem;
+  }
+
+  .evento-card h3 {
+    font-size: 2.1rem;
+  }
+}
+
 
 /* ===== DRESS CODE ===== */
 .dresscode {
@@ -507,4 +580,20 @@ section {
 .btn-neon:hover {
   background: #00ff99;
   color: #000;
+}
+
+/* TRANSICIONES */
+
+@keyframes glowPulse {
+  0% {
+    text-shadow: 0 0 8px rgba(124,255,178,0.25);
+  }
+  50% {
+    text-shadow: 
+      0 0 18px rgba(124,255,178,0.55),
+      0 0 30px rgba(124,255,178,0.35);
+  }
+  100% {
+    text-shadow: 0 0 8px rgba(124,255,178,0.25);
+  }
 }
