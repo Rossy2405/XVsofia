@@ -11,12 +11,22 @@ body {
   font-family: 'Montserrat', sans-serif;
   color: #fff;
 }
+/* PATRÓN ÚNICO PARA TODAS LAS SECCIONES */
 
+.section {
+  padding: 80px 24px;
+}
+
+.section-inner {
+  max-width: 420px;
+  margin: 0 auto;
+  text-align: center;
+}
 /* TARJETA INVITACIÓN */
 .invitation {
   width: 100%;
-  max-width: 480px;          /* clave */
-  margin: 0 auto;            /* centra */
+  max-width: 480px;
+  margin: 0 auto;
   background: #000;
 }
 
@@ -71,8 +81,10 @@ body {
   margin-bottom: 18px;
 
   background: linear-gradient(90deg, #ffffff, #cfcfcf, #ffffff);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  background-clip: text;
+-webkit-background-clip: text;
+color: transparent;
+-webkit-text-fill-color: transparent;
 }
 
 .frase {
@@ -122,11 +134,7 @@ section {
   color: #c7c7c7;
 }
 
-.galeria {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 10px;
-}
+
 .icon-gif {
   width: 50px;
 
@@ -217,7 +225,11 @@ section {
   display: block;
 
   background: linear-gradient(180deg, #ffffff, #cfcfcf);
+
+  background-clip: text;
   -webkit-background-clip: text;
+
+  color: transparent;
   -webkit-text-fill-color: transparent;
 }
 
@@ -295,57 +307,29 @@ section {
   }
 }
 /* ===== GALERÍA CONTENEDOR ===== */
+.galeria {
+  padding: 80px 0;
+}
+
+.galeria-inner {
+  text-align: center;
+}
+
 .galeria-slider {
-  width: 100%;
   overflow: hidden;
+  width: 100%;
 }
 
 .slider-track {
   display: flex;
   gap: 20px;
-  width: max-content; /* 🔥 CLAVE */
-  transition: transform 0.8s ease-in-out;
+  transition: transform 0.8s ease;
 }
+
 .foto {
-  width: 320px;          /* desktop */
+  width: 80vw;
+  max-width: 320px;
   aspect-ratio: 1 / 1;
-  border-radius: 18px;
-  overflow: hidden;
-  flex-shrink: 0;        /* 🔥 CLAVE */
-}
-
-@media (max-width: 768px) {
-  .foto {
-    width: 80vw;
-  }
-}
-/* TEXTO */
-.galeria-frase {
-  font-size: 0.9rem;
-  color: #bcbcbc;
-  max-width: 420px;
-  margin: 0 auto;
-  line-height: 1.6;
-}
-
-/* SLIDER */
-.galeria-slider {
-  width: 100%;
-  overflow: hidden;
-  display: flex;
-  justify-content: center;
-}
-
-.slider-track {
-  display: flex;
-  gap: 20px;
-  transition: transform 0.8s ease-in-out;
-}
-
-/* FOTO 1:1 (1080x1080 visual) */
-.foto {
-  width: 320px;           /* desktop */
-  aspect-ratio: 1 / 1;   /* CLAVE */
   border-radius: 18px;
   overflow: hidden;
   flex-shrink: 0;
@@ -355,20 +339,6 @@ section {
   width: 100%;
   height: 100%;
   object-fit: cover;
-}
-
-/* MOBILE */
-@media (max-width: 480px) {
-  .foto {
-    width: 85vw;
-  }
-}
-
-/* MOBILE */
-@media (max-width: 480px) {
-  .foto {
-    min-width: 80%;
-  }
 }
 
 
