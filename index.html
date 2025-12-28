@@ -11,17 +11,22 @@
 
 <body>
   <!-- PANTALLA DE INGRESO CON MÚSICA -->
-<div id="music-gate" class="music-gate">
-  <div class="music-box">
-    <p class="music-title">¿Cómo querés ingresar?</p>
+<section class="intro">
+  <video autoplay muted loop playsinline class="intro-video">
+    <source src="img/brillo.mp4" type="video/mp4">
+  </video>
 
-    <div class="music-buttons">
-      <button onclick="enterWithMusic()">Con música</button>
-      <button class="secondary" onclick="enterWithoutMusic()">Sin música</button>
+  <div class="intro-overlay"></div>
+
+  <div class="intro-content">
+    <p class="intro-question">¿Querés ingresar con música?</p>
+
+    <div class="intro-buttons">
+      <button id="enterWithMusic">Con música</button>
+      <button id="enterWithoutMusic">Sin música</button>
     </div>
   </div>
-</div>
-
+</section>
 <!-- AUDIO -->
 <audio id="bg-music" loop>
   <source src="img/SpotiDownloader.com - GUAYA - Lucho RK.mp3" type="audio/mpeg">
@@ -100,9 +105,11 @@
 </section>
 <!-- 2.1. frase emocional -->
 <section class="frase-emocional">
+  <div class="frase-overlay"></div>
   <p>
     Una noche para brillar,<br>
-    compartir y celebrar juntos.
+    compartir y celebrar<br>
+    juntos.
   </p>
 </section>
     <!-- 3. Dress Code -->
