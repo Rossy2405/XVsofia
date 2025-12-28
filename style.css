@@ -1,16 +1,72 @@
 /* RESET */
 * {
   margin: 0;
-  padding: 90;
+  padding: 0;
   box-sizing: border-box;
 }
+:root {
+  /* Tipografías */
+  --font-title: 'Playfair Display', serif;
+  --font-body: 'Montserrat', sans-serif;
 
+  /* Base */
+  --black: #0b0b0b;
+  --white-soft: #f5f5f5;
+  --gray-soft: #cfcfcf;
+
+  /* Verdes */
+  --green-dark: #011b10;
+  --green-main: #365e4c;
+  --green-soft: #c9ffea;
+
+  /* Neon */
+  --green-neon: #00ff99;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+section + section {
+  margin-top: 12px;
+}
 /* FONDO GENERAL */
 body {
-  background: #000;          /* NEGRO */
-  font-family: 'Montserrat', sans-serif;
-  color: #fff;
+  background: #000;
+  color: var(--white-soft);
   padding-top: 80px;
+  font-family: var(--font-body);
+}
+.subtitulo {
+  font-family: var(--font-body);
+}
+
+.nombre {
+  font-family: var(--font-title);
+  font-size: clamp(3.2rem, 9vw, 5.8rem);
+  letter-spacing: 0.12em;
+  margin-bottom: 20px;
+
+  background: linear-gradient(
+    180deg,
+    #f2f2f2,
+    #d9d9d9,
+    var(--white-soft)
+  );
+
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+
+  text-shadow: 0 4px 12px rgba(255,255,255,0.05);
+
+  opacity: 0;
+  transform: scale(0.96);
+  animation: sofiaReveal 1.4s ease-out forwards;
+}
+.section h2 {
+  font-family: var(--font-title);
+  letter-spacing: 0.12em;
 }
 
 .main-header {
@@ -22,47 +78,46 @@ body {
   z-index: 1000;
 }
 /* HEADER */
-.header-inner {
-  max-width: 1100px;
-  margin: auto;
-  padding: 15px 25px;
+.invite-header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  max-width: 480px;
+  margin: 0 auto;
+  left: 0;
+  right: 0;
+
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  padding: 14px 20px;
+  background: rgba(0,0,0,0.45);
+  backdrop-filter: blur(10px);
+
+  z-index: 1000;
 }
 
-.logo {
+.header-title {
   font-family: 'Playfair Display', serif;
-  font-size: 1.2rem;
-  color: #c9ffea; /* verde suave */
-  text-decoration: none;
-  letter-spacing: 1px;
+  font-size: 0.9rem;
+  letter-spacing: 0.2em;
+  color: #dcdcdc;
+  text-transform: uppercase;
 }
 
-.nav {
-  display: flex;
-  gap: 20px;
-}
-
-.nav a {
-  font-family: 'Montserrat', sans-serif;
-  font-size: 0.85rem;
-  color: #ffffff;
-  text-decoration: none;
-  opacity: 0.85;
-  transition: opacity 0.3s ease;
-}
-
-.nav a:hover {
-  opacity: 1;
-}
-
-.btn-rsvp {
-  border: 1px solid #c9ffea;
-  padding: 6px 12px;
-  border-radius: 20px;
+.header-cta {
   font-size: 0.75rem;
+  padding: 8px 18px;
+  border-radius: 30px;
+  text-decoration: none;
+
+  background: linear-gradient(135deg, #7cffb2, #4fd1c5);
+  color: #000;
+
+  font-weight: 500;
 }
+
 /* FOOTER */
 .main-footer {
   background: #000;
@@ -81,7 +136,7 @@ body {
 .main-footer span {
   font-family: 'Montserrat', sans-serif;
   font-size: 0.8rem;
-  color: #ccc;
+  color: var(--white-soft);
 }
 
 /* PATRÓN ÚNICO PARA TODAS LAS SECCIONES */
@@ -89,7 +144,11 @@ body {
 .section {
   padding: 80px 24px;
 }
-
+@media (max-width: 600px) {
+  .section {
+    padding: 64px 20px;
+  }
+}
 .section-inner {
   max-width: 420px;
   margin: 0 auto;
@@ -106,8 +165,10 @@ body {
 /* PORTADA */
 .hero {
   position: relative;
-  height: 100vh;
+ 
   overflow: hidden;
+  min-height: 100vh;
+  padding-bottom: 40px;
 }
 
 /* VIDEO SOLO DENTRO DE LA PORTADA */
@@ -139,7 +200,8 @@ body {
   align-items: center;
   justify-content: center;
   text-align: center;
-  padding: 24px;
+  
+  padding: 32px 24px;
 }
 
 /* TEXTOS */
@@ -151,26 +213,8 @@ body {
   margin-bottom: 16px;
 }
 
-.nombre {
-  font-family: 'Playfair Display', serif;
-  font-size: clamp(3.2rem, 9vw, 5.8rem);
-  letter-spacing: 0.12em;
-  margin-bottom: 20px;
 
-  background: linear-gradient(
-    180deg,
-    #011b10,
-    #365e4c,
-    #048145
-  );
 
-  background-clip: text;
-  -webkit-background-clip: text;
-  color: transparent;
-  -webkit-text-fill-color: transparent;
-
-  animation: glowPulse 3s ease-in-out infinite;
-}
 
 .frase {
   font-size: 0.95rem;
@@ -243,7 +287,7 @@ section {
   font-size: 2.6rem;
   letter-spacing: 3px;
   margin-bottom: 1.2rem;
-  color: #ffffff;
+  color: var(--white-soft);
 }
 
 /* TEXTO */
@@ -261,7 +305,7 @@ section {
   padding: 0.7rem 1.8rem;
   border-radius: 30px;
   border: 1px solid rgba(255,255,255,0.6);
-  color: #ffffff;
+  color: var(--white-soft);
   text-decoration: none;
   font-size: 0.95rem;
   letter-spacing: 1px;
@@ -269,7 +313,7 @@ section {
 }
 
 .evento-card a:hover {
-  background: #ffffff;
+  background: var(--white-soft);
   color: #000;
 }
 
@@ -279,7 +323,11 @@ section {
 
 @media (max-width: 600px) {
   .evento-card {
-    padding: 2.5rem 2rem;
+    padding: 2.2rem 1.8rem;
+  }
+
+  .evento-card p {
+    font-size: 1.05rem;
   }
 
   .evento-card h3 {
@@ -294,6 +342,8 @@ section {
   padding: 60px 24px;
 }
 
+
+
 .section-title {
   font-family: 'Playfair Display', serif;
   font-size: 1.8rem;
@@ -302,7 +352,8 @@ section {
 }
 
 .dress-main {
-  font-size: 1.1rem;
+  font-size: 1.05rem;
+  line-height: 1.6;
   margin-bottom: 20px;
   color: #e5e5e5;
 }
@@ -348,6 +399,7 @@ section {
 .countdown {
   text-align: center;
   padding: 70px 24px;
+   gap: 12px;
 }
 
 .countdown-grid {
@@ -370,7 +422,7 @@ section {
   font-size: 1.8rem;
   display: block;
 
-  background: linear-gradient(180deg, #ffffff, #cfcfcf);
+  background: linear-gradient(180deg, var(--white-soft), #cfcfcf);
 
   background-clip: text;
   -webkit-background-clip: text;
@@ -388,7 +440,20 @@ section {
 .time-box {
   animation: fadeUp 1s ease forwards;
 }
+@media (max-width: 600px) {
+  .countdown {
+    padding: 60px 20px;
+  }
 
+  .time-box {
+    min-width: 62px;
+    padding: 12px 8px;
+  }
+
+  .time-box span {
+    font-size: 1.5rem;
+  }
+}
 @keyframes fadeUp {
   from {
     opacity: 0;
@@ -469,7 +534,7 @@ section {
 .slider-track {
   display: flex;
   gap: 20px;
-  transition: transform 0.8s ease;
+  transition: transform 1.2s ease;
 }
 
 .foto {
@@ -587,6 +652,17 @@ section {
   letter-spacing: 1px;
 }
 
+@media (max-width: 600px) {
+  .rsvp {
+    padding: 80px 20px;
+  }
+
+  .btn-rsvp {
+    width: 100%;
+    max-width: 320px;
+  }
+}
+
 /* JUEGOS */
 
 .juegos {
@@ -603,7 +679,7 @@ section {
 }
 
 .juegos p {
-  color: #fff;
+  color: var(--white-soft);
   margin-bottom: 30px;
   font-size: 1.2rem;
 }
@@ -657,16 +733,24 @@ section {
 
 /* TRANSICIONES */
 
-@keyframes glowPulse {
-  0% {
-    text-shadow: 0 0 8px rgba(124,255,178,0.25);
+
+@keyframes sofiaReveal {
+  to {
+    opacity: 1;
+    transform: scale(1);
   }
-  50% {
-    text-shadow: 
-      0 0 18px rgba(124,255,178,0.55),
-      0 0 30px rgba(124,255,178,0.35);
+}
+@media (max-width: 600px) {
+  .section h2 {
+    font-size: 1.6rem;
   }
-  100% {
-    text-shadow: 0 0 8px rgba(124,255,178,0.25);
-  }
+}
+p {
+  line-height: 1.7;
+}
+button,
+.btn,
+a.btn {
+  padding: 14px 26px;
+  border-radius: 28px;
 }
